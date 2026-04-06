@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.categories {
+  background: var(--bahia-white);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+    color: var(--bahia-dark);
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+
+  &__subtitle {
+    font-size: 0.95rem;
+    color: var(--bahia-gray);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 480px) { grid-template-columns: 1fr; }
+  }
+}
+
+.cat-card {
+  background: var(--cat-bg, var(--bahia-beige));
+  border-radius: var(--radius-lg);
+  padding: 36px 24px 28px;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    background: rgba(28, 28, 28, 0.08);
+    color: var(--bahia-dark);
+    padding: 3px 10px;
+    border-radius: 50px;
+  }
+
+  &__emoji {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &__emoji {
+    transform: scale(1.15) rotate(-5deg);
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--bahia-dark);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  &__count {
+    font-size: 0.82rem;
+    color: var(--bahia-gray);
+    margin: 0 0 8px;
+  }
+
+  &__btn {
+    color: var(--bahia-dark) !important;
+    font-size: 0.82rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.03em !important;
+    padding: 4px 0 !important;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--bahia-sand);
+    min-width: unset !important;
+
+    &:hover {
+      text-decoration-color: var(--bahia-dark);
+      background: transparent !important;
+    }
+  }
+}

@@ -1,0 +1,173 @@
+:host {
+  display: block;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(237, 232, 225, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--bahia-sand);
+  transition: var(--transition);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 32px;
+  }
+
+  // ── Logo ────────────────────────────────────────────────────────
+  &__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-img {
+    height: 70px;
+    width: auto;
+    display: block;
+  }
+
+  // ── Nav links desktop ────────────────────────────────────────────
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex: 1;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bahia-dark);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--bahia-dark);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: var(--bahia-shell);
+
+      &::after {
+        width: 100%;
+        background: var(--bahia-shell);
+      }
+    }
+  }
+
+  // ── Acciones ────────────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  &__icon-btn {
+    color: var(--bahia-dark) !important;
+
+    .material-icons {
+      font-size: 22px;
+    }
+
+    &:hover {
+      color: var(--bahia-shell) !important;
+    }
+  }
+
+  &__cart-btn {
+    position: relative;
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--bahia-dark);
+    color: var(--bahia-white);
+    font-size: 9px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  // ── Hamburguesa ─────────────────────────────────────────────────
+  &__burger {
+    display: none !important;
+
+    @media (max-width: 768px) {
+      display: flex !important;
+    }
+  }
+
+  // ── Menú mobile ─────────────────────────────────────────────────
+  &__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: var(--bahia-beige);
+    border-top: 1px solid var(--bahia-sand);
+    padding: 16px 24px 24px;
+    gap: 4px;
+    animation: slideDown 0.2s ease;
+  }
+
+  &__mobile-link {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--bahia-dark);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--bahia-beige-dark);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      color: var(--bahia-shell);
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

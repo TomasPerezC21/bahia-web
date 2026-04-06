@@ -1,0 +1,46 @@
+<header class="navbar" [class.navbar--scrolled]="false">
+  <div class="navbar__inner container">
+
+    <!-- Logo -->
+    <a href="/" class="navbar__logo" aria-label="Bahia — Ir al inicio">
+      <img src="media/logo-sinfondo.png" alt="Bahia" class="navbar__logo-img" />
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <nav class="navbar__links" aria-label="Navegación principal">
+      @for (link of navLinks; track link.label) {
+      <a [href]="link.href" class="navbar__link">{{ link.label }}</a>
+      }
+    </nav>
+
+    <!-- Acciones -->
+    <div class="navbar__actions">
+      <button mat-icon-button class="navbar__icon-btn" aria-label="Buscar">
+        <span class="material-icons">search</span>
+      </button>
+      <button mat-icon-button class="navbar__icon-btn" aria-label="Favoritos">
+        <span class="material-icons">favorite_border</span>
+      </button>
+      <button mat-icon-button class="navbar__icon-btn navbar__cart-btn" aria-label="Carrito" routerLink="/carrito">
+        <span class="material-icons">shopping_bag</span>
+        @if (cartCount() > 0) {
+        <span class="navbar__cart-badge">{{ cartCount() }}</span>
+        }
+      </button>
+      <!-- Hamburguesa (mobile) -->
+      <button mat-icon-button class="navbar__icon-btn navbar__burger" aria-label="Menú" (click)="toggleMenu()">
+        <span class="material-icons">{{ menuOpen ? 'close' : 'menu' }}</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Menú mobile -->
+  @if (menuOpen) {
+  <nav class="navbar__mobile-menu" aria-label="Menú móvil">
+    @for (link of navLinks; track link.label) {
+    <a [href]="link.href" class="navbar__mobile-link" (click)="menuOpen = false">{{ link.label }}</a>
+    }
+  </nav>
+  }
+</header>

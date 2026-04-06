@@ -1,0 +1,67 @@
+<section class="products section">
+  <div class="container">
+
+    <div class="products__header">
+      <h2 class="products__title">Más Vendidos</h2>
+      <p class="products__subtitle">Los favoritos de esta temporada</p>
+    </div>
+
+    <div class="products__grid">
+      @for (product of products; track product.id) {
+        <article class="product-card">
+
+          <!-- Imagen / preview -->
+          <div class="product-card__visual" [style.background]="product.bg">
+            <span class="product-card__emoji" aria-hidden="true">{{ product.emoji }}</span>
+            @if (product.badge) {
+              <span class="product-card__badge product-card__badge--{{ product.badgeType }}">
+                {{ product.badge }}
+              </span>
+            }
+            <button class="product-card__wishlist" aria-label="Añadir a favoritos">
+              <span class="material-icons">favorite_border</span>
+            </button>
+          </div>
+
+          <!-- Info -->
+          <div class="product-card__body">
+            <p class="product-card__category">{{ product.category }}</p>
+            <h3 class="product-card__name">{{ product.name }}</h3>
+
+            <!-- Valoración -->
+            <div class="product-card__rating" [attr.aria-label]="product.rating + ' de 5 estrellas'">
+              @for (s of stars; track s) {
+                <span class="material-icons product-card__star"
+                      [class.product-card__star--on]="s <= product.rating">
+                  {{ s <= product.rating ? 'star' : 'star_border' }}
+                </span>
+              }
+              <span class="product-card__reviews">({{ product.reviews }})</span>
+            </div>
+
+            <!-- Precio + CTA -->
+            <div class="product-card__footer">
+              <div class="product-card__price">
+                @if (product.originalPrice) {
+                  <s class="product-card__price-old">{{ product.originalPrice }}€</s>
+                }
+                <span class="product-card__price-now">{{ product.price }}€</span>
+              </div>
+              <button class="product-card__add" mat-icon-button aria-label="Añadir al carrito" (click)="addToCart(product)">
+                <span class="material-icons">add_shopping_cart</span>
+              </button>
+            </div>
+          </div>
+
+        </article>
+      }
+    </div>
+
+    <div class="products__more">
+      <button mat-stroked-button class="products__more-btn" id="products-see-all">
+        Ver toda la colección
+      </button>
+    </div>
+
+  </div>
+</section>

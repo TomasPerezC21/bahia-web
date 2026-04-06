@@ -1,0 +1,27 @@
+<section class="categories section">
+  <div class="container">
+
+    <div class="categories__header">
+      <h2 class="categories__title">Explora la Colección</h2>
+      <p class="categories__subtitle">Encuentra lo que buscas</p>
+    </div>
+
+    <div class="categories__grid">
+      @for (cat of categories; track cat.name) {
+        <div class="cat-card" [style.--cat-bg]="cat.bg">
+          @if (cat.tag) {
+            <span class="cat-card__tag">{{ cat.tag }}</span>
+          }
+          <div class="cat-card__emoji" aria-hidden="true">{{ cat.emoji }}</div>
+          <h3 class="cat-card__name">{{ cat.name }}</h3>
+          <p class="cat-card__count">{{ cat.count }} modelos</p>
+          <button mat-button class="cat-card__btn">
+            Ver todo
+            <span class="material-icons" style="font-size:16px; margin-left:4px">arrow_forward</span>
+          </button>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
