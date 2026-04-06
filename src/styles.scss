@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// ─── Fuentes ──────────────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+// ─── Tema Angular Material ────────────────────────────────────────────────────
+html {
+  height: 100%;
+  @include mat.theme((color: (primary: mat.$rose-palette,
+        tertiary: mat.$rose-palette,
+      ),
+      typography: 'DM Sans',
+      density: 0,
+    ));
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--bahia-beige);
+  color: var(--bahia-dark);
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+:root {
+  // Paleta — derivada del logo
+  --bahia-beige: #EDE8E1; // fondo principal
+  --bahia-beige-dark: #D9D2C8; // fondo alternativo
+  --bahia-sand: #C8B9A5; // bordes, separadores
+  --bahia-shell: #9E9287; // acentos suaves (color concha)
+  --bahia-dark: #1C1C1C; // texto principal
+  --bahia-gray: #6B6B6B; // texto secundario
+  --bahia-gray-light: #A8A8A8; // texto muted
+  --bahia-white: #FAFAF8; // blancos cálidos
+  --bahia-black: #0D0D0D; // negro puro (para títulos bold)
+
+  // Tipografía
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  // Espaciado de sección
+  --section-padding-y: 96px;
+  --section-padding-x: 24px;
+  --container-max: 1280px;
+
+  // Radios
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  // Sombras
+  --shadow-xs: 0 1px 4px rgba(28, 28, 28, 0.06);
+  --shadow-sm: 0 2px 12px rgba(28, 28, 28, 0.08);
+  --shadow-md: 0 6px 24px rgba(28, 28, 28, 0.10);
+  --shadow-lg: 0 12px 48px rgba(28, 28, 28, 0.14);
+
+  // Transición base
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ─── Utilidades globales ──────────────────────────────────────────────────────
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+}
+
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+// Scrollbar sutil
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bahia-beige-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bahia-sand);
+  border-radius: 3px;
+}
+
+// Selección de texto
+::selection {
+  background: var(--bahia-shell);
+  color: var(--bahia-white);
+}
+
+// Transiciones en elementos interactivos
+a,
+button {
+  transition: var(--transition);
+}
