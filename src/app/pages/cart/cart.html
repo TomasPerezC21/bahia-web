@@ -1,0 +1,119 @@
+<div class="cart-page section">
+  <div class="container">
+    <div class="cart-header">
+      <h1 class="cart-title">Tu Carrito</h1>
+      <a routerLink="/" class="cart-back">← Volver a la tienda</a>
+    </div>
+
+    @if (orderCompleted) {
+      <div class="cart-empty success-message" style="background: var(--bahia-white); border-radius: var(--radius-lg); padding: 80px 20px;">
+        <span class="material-icons cart-empty-icon" style="color: #6a9c78; font-size: 72px;">check_circle_outline</span>
+        <h2 style="font-family: var(--font-display); color: var(--bahia-dark); margin: 0 0 10px;">¡Pedido Recibido!</h2>
+        <p style="margin-bottom: 30px;">Hemos enviado los detalles a Bahía Miranda. Pronto nos pondremos en contacto contigo.</p>
+        <button mat-raised-button color="primary" routerLink="/">Volver a la tienda</button>
+      </div>
+    } @else if (cartService.items().length === 0) {
+      <div class="cart-empty">
+        <span class="material-icons cart-empty-icon">shopping_bag</span>
+        <p>Tu carrito está vacío.</p>
+        <button mat-raised-button color="primary" routerLink="/">Descubrir colección</button>
+      </div>
+    } @else {
+      <div class="cart-grid">
+        
+        <!-- Lista de productos -->
+        <div class="cart-items">
+          @for (item of cartService.items(); track item.product.id) {
+            <div class="cart-item">
+              <div class="cart-item-visual" [style.background]="item.product.bg">
+                <span class="cart-item-emoji">{{ item.product.emoji }}</span>
+              </div>
+              <div class="cart-item-info">
+                <h3>{{ item.product.name }}</h3>
+                <p class="cart-item-cat">{{ item.product.category }} <span *ngIf="item.size && item.size !== 'Única'">| Talla: {{ item.size }}</span></p>
+                <div class="cart-item-actions">
+                  <div class="quantity-controls">
+                    <button mat-icon-button (click)="decreaseQuantity(item.product.id, item.quantity, item.size)" aria-label="Reducir">
+                      <span class="material-icons" style="font-size: 16px;">remove</span>
+                    </button>
+                    <span class="quantity">{{ item.quantity }}</span>
+                    <button mat-icon-button (click)="increaseQuantity(item.product.id, item.quantity, item.size)" aria-label="Aumentar">
+                      <span class="material-icons" style="font-size: 16px;">add</span>
+                    </button>
+                  </div>
+                  <button mat-button color="warn" (click)="removeItem(item.product.id, item.size)">Eliminar</button>
+                </div>
+              </div>
+              <div class="cart-item-price">
+                <!-- pipe currency -> € -->
+                {{ (item.product.price * item.quantity) | number:'1.2-2' }}€
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Checkout / Formulario -->
+        <div class="cart-checkout">
+          <div class="checkout-summary">
+            <h3>Resumen del Pedido</h3>
+            <div class="summary-line">
+              <span>Subtotal ({{ cartService.totalItems() }} artículos)</span>
+              <span>{{ cartService.totalPrice() | number:'1.2-2' }}€</span>
+            </div>
+            <div class="summary-line">
+              <span>Envío (Península)</span>
+              <span>Calculado por email</span>
+            </div>
+            <hr>
+            <div class="summary-line summary-total">
+              <span>Total Estimado</span>
+              <span>{{ cartService.totalPrice() | number:'1.2-2' }}€</span>
+            </div>
+          </div>
+
+          <div class="checkout-form">
+            <h3>Datos de Envío</h3>
+            <p class="form-help">Rellena tus datos para generar el correo de pedido.</p>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nombre completo</mat-label>
+              <input matInput [(ngModel)]="customerName" required placeholder="Ej. Miranda Smith">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput type="email" [(ngModel)]="customerEmail" required placeholder="tu@email.com">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Teléfono (Opcional)</mat-label>
+              <input matInput type="tel" [(ngModel)]="customerPhone" placeholder="+34 600 000 000">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Dirección completa y Código Postal</mat-label>
+              <textarea matInput [(ngModel)]="customerAddress" required rows="3" placeholder="Calle, Número, Piso, Ciudad, CP, Provincia"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Notas o Tallas requeridas</mat-label>
+              <textarea matInput [(ngModel)]="notes" rows="2" placeholder="Ej: El bikini coral lo necesito en talla M de la parte de arriba y S de la parte de abajo."></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button class="send-order-btn" (click)="sendOrder()" [disabled]="isSubmitting">
+              @if (isSubmitting) {
+                <mat-spinner diameter="24"></mat-spinner>
+                Procesando...
+              } @else {
+                Confirmar Pedido
+                <span class="material-icons">send</span>
+              }
+            </button>
+            <p class="btn-help">Al pulsar, tu pedido será enviado directamente.</p>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+</div>
