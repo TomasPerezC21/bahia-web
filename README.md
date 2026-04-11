@@ -1,59 +1,76 @@
-# BahiaWeb
+# Bahía Miranda — Web Store 🌊👙
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+[![Angular](https://img.shields.io/badge/Angular-21+-DD0031.svg?style=flat-square&logo=angular)](https://angular.io/)
+[![Material Design](https://img.shields.io/badge/Angular--Material-Latest-blue.svg?style=flat-square&logo=angular)](https://material.angular.io/)
+[![Vercel](https://img.shields.io/badge/Hosted-Vercel-black.svg?style=flat-square&logo=vercel)](https://vercel.com/)
 
-## Development server
+**Bahía Miranda** es una tienda web minimalista y elegante diseñada para una marca familiar de bikinis y trajes de baño artesanales. El proyecto se centra en ofrecer una experiencia de usuario premium, con un sistema de navegación intuitivo y un proceso de compra simplificado basado en pedidos por correo electrónico.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🚀 Demo En Vivo
+Puedes ver la versión actual desplegada en el siguiente enlace:
+👉 **[bahia-web-x8o6.vercel.app](https://bahia-web-x8o6.vercel.app/)**
+
+---
+
+## ✨ Características Principales
+
+-   **Diseño Premium & Responsive**: Interfaz moderna basada en una paleta de colores beige, arena y concha, totalmente adaptada a dispositivos móviles.
+-   **Arquitectura Modular**: Construida mediante componentes independientes y reutilizables siguiendo las mejores prácticas de Angular.
+-   **Gestión de Estado Moderna**: Utilización de **Angular Signals** para el manejo reactivo del carrito de compras.
+-   **Checkout "Invisible"**: Sistema de pedidos integrado con **Web3Forms**, permitiendo que los clientes realicen sus compras sin pasarelas de pago complejas, enviando los detalles directamente a la administración.
+-   **Tipografía Elegante**: Uso de *Playfair Display* para títulos display y *DM Sans* para el cuerpo de texto, logrando una estética de alta gama.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+-   **Framework**: [Angular 21](https://angular.dev/) (Standalone Components).
+-   **Estilos**: [SCSS](https://sass-lang.com/) con metodología BEM y [Angular Material](https://material.angular.io/) para componentes de UI.
+-   **Iconografía**: Google Material Icons.
+-   **Integraciones**: Web3Forms para la comunicación vía email.
+-   **Hosting**: Vercel.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+src/app/
+├── components/       # Componentes reutilizables (Navbar, Hero, Footer...)
+├── models/           # Interfaces y tipos de datos (Product, CartItem)
+├── pages/            # Vistas principales (Home, Cart)
+├── services/         # Lógica de negocio y estado global (CartService)
+├── app.routes.ts     # Configuración del enrutamiento
+└── styles.scss       # Design tokens y estilos globales
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ⚙️ Instalación Local
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Si deseas clonar el proyecto y ejecutarlo en tu máquina:
 
-```bash
-ng generate component component-name
-```
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/tu-usuario/bahia-web.git
+    ```
+2.  **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
+3.  **Ejecutar el servidor de desarrollo**:
+    ```bash
+    ng serve
+    ```
+    Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🤝 Contacto
 
-## Building
+Desarrollado con ❤️ por [Tomas Perez](https://github.com/TomasPerezC21).
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+*Este proyecto es parte de un desarrollo personal para la marca Bahía Miranda.*
