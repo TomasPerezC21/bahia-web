@@ -1,4 +1,4 @@
-# Bahía Miranda — Web Store 🌊👙
+# Bahía — Web Store 🌊👙
 
 [![Angular](https://img.shields.io/badge/Angular-21+-DD0031.svg?style=flat-square&logo=angular)](https://angular.io/)
 [![Material Design](https://img.shields.io/badge/Angular--Material-Latest-blue.svg?style=flat-square&logo=angular)](https://material.angular.io/)
